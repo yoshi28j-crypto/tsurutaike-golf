@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施設 | 鶴田池ゴルフセンター</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;700;900&family=Barlow:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:      #0a0a0a;
+    --black-card: #1c1c1c;
+    --blue:       #1a7bc4;
+    --blue-bright:#2d9de0;
+    --blue-soft:  #5ab8f0;
+    --gold:       #c9a84c;
+    --gold-light: #e8cb7a;
+    --white:      #ffffff;
+    --off-white:  #e8eef2;
+    --grey-text:  rgba(232,238,242,0.7);
+    --grey-dim:   rgba(232,238,242,0.4);
+    --nav-bg:     #080808;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--black); color:var(--off-white); font-family:'Noto Sans JP',sans-serif; font-weight:300; line-height:1.8; }
+
+  /* HEADER */
+  header { background:var(--nav-bg); border-bottom:1px solid rgba(26,123,196,0.5); padding:14px 32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; box-shadow:0 2px 30px rgba(0,0,0,0.8); }
+  .header-left { display:flex; align-items:center; gap:14px; }
+  .header-logo { width:46px; height:48px; display:block; }
+  .header-logo-text .ja { display:block; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:1.1rem; color:var(--white); letter-spacing:0.05em; }
+  .header-logo-text .en { display:block; font-family:'Barlow',sans-serif; font-weight:300; font-size:0.68rem; color:var(--blue-soft); letter-spacing:0.25em; }
+  .header-tel { color:var(--grey-text); font-size:0.8rem; text-align:right; font-family:'Barlow',sans-serif; }
+  .header-tel strong { display:block; font-size:1.25rem; font-weight:600; color:var(--white); }
+
+  /* NAV */
+  nav { background:var(--nav-bg); border-bottom:1px solid rgba(255,255,255,0.06); }
+  nav ul { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; padding:0; }
+  nav ul li a { display:inline-block; background:#000; color:var(--off-white); text-decoration:none; padding:10px 22px; font-size:0.82rem; letter-spacing:0.15em; font-family:'Noto Sans JP',sans-serif; border-right:1px solid rgba(255,255,255,0.06); transition:background 0.2s,color 0.2s; }
+  nav ul li:first-child a { border-left:1px solid rgba(255,255,255,0.06); }
+  nav ul li a:hover { background:var(--blue); color:var(--white); }
+  nav ul li a.active { background:var(--blue); color:var(--white); border-bottom:2px solid var(--blue-bright); }
+  nav ul li a.disabled { color:rgba(232,238,242,0.22); cursor:not-allowed; pointer-events:none; }
+
+  /* PAGE HERO */
+  .page-hero { background:linear-gradient(170deg,rgba(10,10,10,0.97) 0%,rgba(10,22,38,0.95) 100%); padding:60px 20px 50px; text-align:center; border-bottom:1px solid rgba(26,123,196,0.3); position:relative; overflow:hidden; }
+  .page-hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(to right,transparent,var(--blue),var(--blue-bright),var(--blue),transparent); }
+  .page-hero-label { font-family:'Barlow',sans-serif; font-size:0.72rem; color:var(--blue-soft); letter-spacing:0.4em; display:block; margin-bottom:12px; }
+  .page-hero h1 { font-family:'Noto Sans JP',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:0.1em; }
+
+  /* CONTENT */
+  .content-wrap { max-width:860px; margin:0 auto; padding:48px 20px; }
+
+  /* セクションタイトル */
+  .sec-title {
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:1.05rem;
+    color:var(--white);
+    font-weight:700;
+    letter-spacing:0.18em;
+    border-left:3px solid var(--gold);
+    padding-left:14px;
+    margin-bottom:24px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .sec-label {
+    font-family:'Barlow',sans-serif;
+    font-size:0.65rem;
+    color:var(--gold);
+    letter-spacing:0.3em;
+    display:block;
+    margin-bottom:6px;
+  }
+
+  /* ゴルフ工房 メインブロック */
+  .kobo-block {
+    background: linear-gradient(160deg, rgba(20,15,5,0.9) 0%, rgba(10,10,10,0.8) 100%);
+    border:1px solid rgba(201,168,76,0.3);
+    border-top:2px solid var(--gold);
+    border-radius:2px;
+    padding:36px 36px 32px;
+    margin-bottom:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .kobo-block::before {
+    content:'工房';
+    position:absolute;
+    right:-10px; bottom:-20px;
+    font-size:10rem;
+    color:rgba(201,168,76,0.04);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:900;
+    line-height:1;
+    pointer-events:none;
+  }
+  .kobo-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(201,168,76,0.15);
+    border:1px solid rgba(201,168,76,0.5);
+    color:var(--gold-light);
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.2em;
+    padding:4px 14px;
+    margin-bottom:20px;
+  }
+  .kobo-badge::before { content:'●'; font-size:0.5rem; animation:pulse 1.5s ease-in-out infinite; }
+  .kobo-lead {
+    font-size:1rem;
+    color:var(--off-white);
+    font-weight:400;
+    line-height:1.9;
+    margin-bottom:24px;
+    letter-spacing:0.05em;
+  }
+  .kobo-trouble-title {
+    font-size:0.78rem;
+    color:var(--gold);
+    letter-spacing:0.15em;
+    font-weight:700;
+    margin-bottom:12px;
+  }
+  .kobo-trouble {
+    list-style:none;
+    padding:0;
+    margin-bottom:24px;
+  }
+  .kobo-trouble li {
+    font-size:0.9rem;
+    color:var(--grey-text);
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .kobo-trouble li::before {
+    content:'';
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--gold);
+    flex-shrink:0;
+  }
+  .kobo-service {
+    list-style:none;
+    padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:28px;
+  }
+  .kobo-service li {
+    background:rgba(201,168,76,0.06);
+    border:1px solid rgba(201,168,76,0.2);
+    padding:12px 16px;
+    font-size:0.88rem;
+    color:var(--off-white);
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    line-height:1.6;
+  }
+  .kobo-service li::before { content:'✦'; color:var(--gold); font-size:0.7rem; margin-top:3px; flex-shrink:0; }
+  .kobo-tel {
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background:rgba(201,168,76,0.08);
+    border:1px solid rgba(201,168,76,0.4);
+    padding:12px 24px;
+    text-decoration:none;
+    transition:all 0.2s;
+  }
+  .kobo-tel:hover { background:rgba(201,168,76,0.18); }
+  .kobo-tel-label { font-size:0.72rem; color:var(--gold); letter-spacing:0.15em; display:block; }
+  .kobo-tel-num { font-family:'Barlow',sans-serif; font-size:1.5rem; font-weight:700; color:var(--white); letter-spacing:0.05em; }
+
+  /* katsuzou cafe */
+  .cafe-section {
+    margin-top: 48px;
+    margin-bottom: 0;
+  }
+  .cafe-block {
+    background: linear-gradient(160deg, rgba(5,20,35,0.85) 0%, rgba(10,10,10,0.7) 100%);
+    border: 1px solid rgba(26,123,196,0.25);
+    border-top: 2px solid var(--blue);
+    border-radius: 2px;
+    padding: 32px 36px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  @media(max-width:600px) {
+  }
+  .cafe-block::before {
+    content: 'café';
+    position: absolute;
+    right: -10px; bottom: -20px;
+    font-size: 9rem;
+    color: rgba(26,123,196,0.04);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 900;
+    line-height: 1;
+    pointer-events: none;
+  }
+  /* ギャラリー */
+  .cafe-gallery {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .cafe-gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .cafe-gallery-main:hover img { transform: scale(1.04); }
+  .cafe-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .cafe-gallery-item:hover img { transform: scale(1.06); }
+  @media(max-width:600px) {
+    .cafe-gallery { grid-template-columns: 1fr; }
+  }
+
+  /* ロゴ右上 */
+  /* 外観写真（大きめ） */
+  .cafe-outside-wrap {
+    margin-bottom: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  /* 写真グリッド（2×2） */
+  @media(max-width:560px) {
+  }
+
+  /* 外観写真＋ロゴ */
+  .cafe-outside-wrap {
+    position: relative;
+    margin-bottom: 22px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .cafe-outside-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+  }
+  .cafe-logo-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+  }
+
+  /* ギャラリー */
+  .cafe-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .cafe-gallery-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+  @media(max-width:600px) {
+    .cafe-gallery { grid-template-columns: 1fr 1fr; }
+    .cafe-outside-img { height: 180px; }
+    .cafe-logo-img { width: 54px; height: 54px; }
+  }
+
+  .cafe-catch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(26,123,196,0.2);
+  }
+  .cafe-catch-text {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(1.0rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+  .cafe-lead {
+    font-size: 0.9rem;
+    color: var(--grey-text);
+    line-height: 2.0;
+    margin-bottom: 28px;
+    letter-spacing: 0.04em;
+  }
+  .cafe-lead em {
+    font-style: normal;
+    color: var(--blue-soft);
+    font-weight: 500;
+  }
+  .cafe-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .cafe-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 14px;
+    border-radius: 2px;
+  }
+  .cafe-feature-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .cafe-feature-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .cafe-feature-desc {
+    font-size: 0.78rem;
+    color: var(--grey-dim);
+    line-height: 1.7;
+  }
+  .cafe-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    background: rgba(26,123,196,0.06);
+    border: 1px solid rgba(26,123,196,0.2);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+  .cafe-info-item { display: flex; flex-direction: column; gap: 4px; }
+  .cafe-info-label {
+    font-size: 0.68rem;
+    color: var(--blue-soft);
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+  .cafe-info-val {
+    font-size: 0.82rem;
+    color: var(--off-white);
+    line-height: 1.6;
+  }
+  .cafe-info-tel {
+    font-size: 1rem;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .cafe-info-tel:hover { color: var(--blue-soft); }
+  .cafe-sns-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(26,123,196,0.1);
+    border: 1px solid rgba(26,123,196,0.4);
+    color: var(--blue-soft);
+    text-decoration: none;
+    padding: 10px 22px;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+  .cafe-sns-btn:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+  }
+  @media(max-width:600px) {
+    .cafe-features { grid-template-columns: 1fr; }
+    .cafe-info-grid { grid-template-columns: 1fr 1fr; }
+    .cafe-block { padding: 22px 18px; }
+  }
+
+  /* 保留セクション */
+  .pending-section {
+    margin-top:48px;
+  }
+  .pending-title {
+    font-size:0.8rem;
+    color:var(--grey-dim);
+    letter-spacing:0.2em;
+    margin-bottom:16px;
+    font-family:'Barlow',sans-serif;
+  }
+  .pending-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:10px;
+  }
+  .pending-card {
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:2px;
+    padding:20px 16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .pending-card h3 {
+    font-size:0.9rem;
+    color:rgba(232,238,242,0.2);
+    font-weight:400;
+    letter-spacing:0.1em;
+    margin-bottom:8px;
+    filter:blur(0.5px);
+  }
+  .pending-card p {
+    font-size:0.78rem;
+    color:rgba(232,238,242,0.12);
+    line-height:1.6;
+    filter:blur(1px);
+    user-select:none;
+  }
+  .pending-card-overlay {
+    position:absolute;
+    inset:0;
+    background:rgba(10,10,10,0.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pending-card-overlay span {
+    font-size:0.72rem;
+    color:rgba(232,238,242,0.3);
+    letter-spacing:0.15em;
+    text-align:center;
+    line-height:1.8;
+  }
+
+  /* 写真・マップ横並び */
+  .kobo-media {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .kobo-photo-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .kobo-map-wrap {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .kobo-photo {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    display: block;
+  }
+  .kobo-map {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    object-position: center center;
+    background: #fff;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    display: block;
+  }
+  .kobo-photo-label {
+    font-size: 0.68rem;
+    color: var(--grey-dim);
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  @media(max-width:560px) {
+    .kobo-media { flex-direction: column; }
+    .kobo-photo { height: 180px; }
+    .kobo-map { width: 100%; height: 180px; }
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* FOOTER */
+  footer { background:var(--nav-bg); border-top:1px solid rgba(26,123,196,0.4); padding:40px 24px 24px; text-align:center; }
+  .footer-links { display:inline-flex; flex-wrap:wrap; justify-content:center; margin-bottom:24px; border:1px solid rgba(255,255,255,0.07); }
+  .footer-links a { background:transparent; color:var(--grey-text); text-decoration:none; padding:7px 18px; font-size:0.78rem; letter-spacing:0.12em; border-right:1px solid rgba(255,255,255,0.07); font-family:'Noto Sans JP',sans-serif; transition:background 0.2s,color 0.2s; }
+  .footer-links a:last-child { border-right:none; }
+  .footer-links a:hover { background:var(--blue); color:var(--white); }
+  .footer-links a.disabled { color:rgba(232,238,242,0.18); pointer-events:none; cursor:not-allowed; }
+  footer address { font-style:normal; font-size:0.8rem; color:var(--grey-dim); line-height:2.2; margin-bottom:16px; }
+  footer .copy { font-size:0.7rem; color:rgba(232,238,242,0.2); letter-spacing:0.05em; font-family:'Barlow',sans-serif; }
+
+  @media(max-width:600px){
+    header { padding:12px 16px; }
+    .content-wrap { padding:32px 14px; }
+    .kobo-block { padding:24px 18px; }
+    .kobo-service { grid-template-columns:1fr; }
+    nav ul li a { padding:9px 12px; font-size:0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <img class="header-logo" src="images/logo.gif" alt="鶴田池ゴルフセンター ロゴ">
+    <div class="header-logo-text">
+      <span class="ja">鶴田池ゴルフセンター</span>
+      <span class="en">TSURUTAIKE GOLF CENTER</span>
+    </div>
+  </div>
+  <div class="header-tel">お問合せ<strong>072-273-6600</strong></div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="facility.html" class="active">施　設</a></li>
+    <li><a class="disabled">営業時間・料金</a></li>
+    <li><a class="disabled">スクール</a></li>
+    <li><a href="access.html">アクセス</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <span class="page-hero-label">FACILITY</span>
+  <h1>施　設</h1>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- ゴルフ工房 -->
+  <span class="sec-label">NOW OPEN</span>
+  <div class="sec-title">アフターゴルフ工房</div>
+
+  <div class="kobo-block">
+    <div class="kobo-badge">営業中</div>
+    <p class="kobo-lead">
+      当センターに隣接する<strong style="color:var(--gold-light);">アフターゴルフ工房</strong>。<br>
+      クラブの修理・リペア、その他ゴルフクラブに関する<br>
+      あらゆるトラブルを解決いたします。
+    </p>
+
+    <!-- 写真・マップ -->
+    <div class="kobo-media">
+      <div class="kobo-photo-wrap">
+        <img src="images/kobo_outside.gif" alt="アフターゴルフ工房 外観" class="kobo-photo">
+        <span class="kobo-photo-label">アフターゴルフ工房 外観</span>
+      </div>
+      <div class="kobo-map-wrap">
+        <img src="images/golfkobo_map.gif" alt="ゴルフ工房 場所マップ" class="kobo-map">
+        <span class="kobo-photo-label">駐車場内の場所</span>
+      </div>
+    </div>
+
+    <p class="kobo-trouble-title">こんなお悩みはありませんか？</p>
+    <ul class="kobo-trouble">
+      <li>シャフトが曲がってしまった！</li>
+      <li>クラブが古くて傷だらけ…</li>
+      <li>重量・角度・バランスがしっくりこない！</li>
+    </ul>
+
+    <div class="kobo-service">
+      <li>微調整やリペアはもちろんの事</li>
+      <li>あなただけの最強のクラブをお作りします</li>
+      <li>納得できるプレーのためのお手伝い</li>
+      <li>ゴルフクラブのことなら何でもご相談を</li>
+    </div>
+
+    <a href="tel:072-273-6600" class="kobo-tel">
+      <div>
+        <span class="kobo-tel-label">お問合せ・ご予約</span>
+        <span class="kobo-tel-num">072-273-6600</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- katsuzou cafe -->
+  <div class="cafe-section">
+    <span class="sec-label" style="color:var(--blue-soft);">NOW OPEN</span>
+    <div class="sec-title" style="border-color:var(--blue);">katsuzou cafe（カツゾウカフェ）</div>
+
+    <div class="cafe-block">
+
+      <!-- 外観写真（大）＋ロゴ右上 -->
+      <div class="cafe-outside-wrap">
+        <img src="images/katsuzo_outside.jpeg" alt="katsuzou cafe 外観" class="cafe-outside-img">
+      </div>
+
+      <!-- キャッチコピー＋ロゴ -->
+      <div class="cafe-catch">
+        <span class="cafe-catch-text">ゴルフの前後に、寛ぎのひとときを。</span>
+        <img src="images/katsuzo_logo.jpg" alt="katsuzou cafe ロゴ" class="cafe-logo-img">
+      </div>
+      <p class="cafe-lead">
+        鶴田池ゴルフセンター敷地内に誕生した、緑あふれる癒しのカフェ。<br>
+        白と木を基調としたナチュラルな店内は、大きな窓から自然光が差し込む開放的な空間。<br>
+        創業270年以上のオランダ老舗ブランド<em>「ダウエグバーツ」</em>の珈琲とともに、ゆったりとした時間をお過ごしください。
+      </p>
+
+      <!-- 写真ギャラリー（4枚） -->
+      <div class="cafe-gallery">
+        <img src="images/katsuzo_inside.jpeg" alt="店内" class="cafe-gallery-img">
+        <img src="images/katsuzo_coffeehot.jpeg" alt="ホットコーヒー" class="cafe-gallery-img">
+        <img src="images/katsuzo_coffee.jpg" alt="アイスコーヒー" class="cafe-gallery-img">
+        <img src="images/katsuzo_morning.jpg" alt="モーニング" class="cafe-gallery-img">
+      </div>
+
+      <!-- 特徴 -->
+      <div class="cafe-features">
+        <div class="cafe-feature">
+          <span class="cafe-feature-icon">☕</span>
+          <div>
+            <p class="cafe-feature-title">こだわりの珈琲・紅茶</p>
+            <p class="cafe-feature-desc">ダウエグバーツ珈琲のほか、高級茶葉 Mighty Leaf を使用した紅茶もお愉しみください。</p>
+          </div>
+        </div>
+        <div class="cafe-feature">
+          <span class="cafe-feature-icon">🥪</span>
+          <div>
+            <p class="cafe-feature-title">45パターン以上のモーニング</p>
+            <p class="cafe-feature-desc">トースト・ドッグ・ハーフ＆ハーフ、たまごの調理法も選べる充実のモーニング。550円〜。</p>
+          </div>
+        </div>
+        <div class="cafe-feature">
+          <span class="cafe-feature-icon">📶</span>
+          <div>
+            <p class="cafe-feature-title">フリーWi-Fi・コンセント完備</p>
+            <p class="cafe-feature-desc">テレワークや勉強にもぴったり。ゆっくりと過ごせる心地よい空間です。</p>
+          </div>
+        </div>
+        <div class="cafe-feature">
+          <span class="cafe-feature-icon">🛍</span>
+          <div>
+            <p class="cafe-feature-title">テイクアウトOK</p>
+            <p class="cafe-feature-desc">ドリンク・フードはすべてテイクアウト対応。練習前の一杯にも。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 営業情報 -->
+      <div class="cafe-info-grid">
+        <div class="cafe-info-item">
+          <span class="cafe-info-label">営業時間</span>
+          <span class="cafe-info-val">平日 9:00〜19:30<br>土日祝 8:00〜19:30</span>
+        </div>
+        <div class="cafe-info-item">
+          <span class="cafe-info-label">モーニング</span>
+          <span class="cafe-info-val">平日〜12:00<br>土日祝〜13:00</span>
+        </div>
+        <div class="cafe-info-item">
+          <span class="cafe-info-label">ランチ</span>
+          <span class="cafe-info-val">11:00〜14:00</span>
+        </div>
+        <div class="cafe-info-item">
+          <span class="cafe-info-label">電話</span>
+          <a href="tel:072-247-5564" class="cafe-info-tel">072-247-5564</a>
+        </div>
+      </div>
+
+      <a href="https://www.instagram.com/katsuzou.cafe/" class="cafe-sns-btn" target="_blank">
+        📷 Instagram @katsuzou.cafe
+      </a>
+    </div>
+  </div>
+
+  <!-- 保留施設 -->
+  <div class="pending-section">
+    <p class="pending-title">OTHER FACILITIES — 2027 RENEWAL OPEN</p>
+    <div class="pending-grid">
+      <div class="pending-card">
+        <h3>エントランス・フロント</h3>
+        <p>明るいフロントでお客様をお出迎えします。</p>
+        <div class="pending-card-overlay"><span>2027年秋頃<br>リニューアル予定</span></div>
+      </div>
+      <div class="pending-card">
+        <h3>打　席</h3>
+        <p>最長300ヤード・全100打席。ふかふかカーペットの快適打席。</p>
+        <div class="pending-card-overlay"><span>2027年秋頃<br>リニューアル予定</span></div>
+      </div>
+      <div class="pending-card">
+        <h3>ゴルフ用品</h3>
+        <p>センター内にゴルフパートナー販売店常設。充実の品揃え。</p>
+        <div class="pending-card-overlay"><span>2027年秋頃<br>リニューアル予定</span></div>
+      </div>
+      <div class="pending-card">
+        <h3>その他施設</h3>
+        <p>ロッカールーム・全自動ウォシュレット・館内フリーWifi完備。</p>
+        <div class="pending-card-overlay"><span>2027年秋頃<br>リニューアル予定</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:20px;">
+    <div class="footer-links">
+      <a href="index.html">HOME</a>
+      <a href="facility.html">施　設</a>
+      <a class="disabled">営業時間・料金</a>
+      <a class="disabled">スクール</a>
+      <a href="access.html">アクセス</a>
+    </div>
+  </div>
+  <address>〒593-8312 堺市西区草部1630　鶴田池ゴルフセンター<br>電話：072-273-6600</address>
+  <p class="copy">Copyright © TSURUTAIKE GOLF CENTER All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
