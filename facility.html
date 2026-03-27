@@ -15,7 +15,7 @@
     --gold:       #c9a84c;
     --gold-light: #e8cb7a;
     --white:      #ffffff;
-    --off-white:  #e8eef2;
+    --off-white:  #f8fafc;
     --grey-text:  rgba(232,238,242,0.7);
     --grey-dim:   rgba(232,238,242,0.4);
     --nav-bg:     #080808;
@@ -35,11 +35,31 @@
   /* NAV */
   nav { background:var(--nav-bg); border-bottom:1px solid rgba(255,255,255,0.06); }
   nav ul { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; padding:0; }
-  nav ul li a { display:inline-block; background:#000; color:var(--off-white); text-decoration:none; padding:10px 22px; font-size:0.82rem; letter-spacing:0.15em; font-family:'Noto Sans JP',sans-serif; border-right:1px solid rgba(255,255,255,0.06); transition:background 0.2s,color 0.2s; }
+  nav ul li { position: relative; }
+  nav ul li a { display:inline-block; background:#000; color:var(--off-white); text-decoration:none; padding: 10px 22px; font-size:0.82rem; letter-spacing:0.15em; font-family:'Noto Sans JP',sans-serif; border-right:1px solid rgba(255,255,255,0.06); transition:background 0.2s,color 0.2s; }
   nav ul li:first-child a { border-left:1px solid rgba(255,255,255,0.06); }
   nav ul li a:hover { background:var(--blue); color:var(--white); }
   nav ul li a.active { background:var(--blue); color:var(--white); border-bottom:2px solid var(--blue-bright); }
   nav ul li a.disabled { color:rgba(232,238,242,0.22); cursor:not-allowed; pointer-events:none; }
+  /* 準備中バッジ：navリンク上辺に絶対配置 */
+  nav ul li .nav-coming {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26,123,196,0.28);
+    border: 1px solid rgba(26,123,196,0.55);
+    color: rgba(90,184,240,0.95);
+    font-size: 0.5rem;
+    letter-spacing: 0.12em;
+    padding: 1px 7px;
+    border-radius: 0 0 3px 3px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 2;
+  }
 
   /* PAGE HERO */
   .page-hero { background:linear-gradient(170deg,rgba(10,10,10,0.97) 0%,rgba(10,22,38,0.95) 100%); padding:60px 20px 50px; text-align:center; border-bottom:1px solid rgba(26,123,196,0.3); position:relative; overflow:hidden; }
@@ -510,10 +530,29 @@
   /* FOOTER */
   footer { background:var(--nav-bg); border-top:1px solid rgba(26,123,196,0.4); padding:40px 24px 24px; text-align:center; }
   .footer-links { display:inline-flex; flex-wrap:wrap; justify-content:center; margin-bottom:24px; border:1px solid rgba(255,255,255,0.07); }
-  .footer-links a { background:transparent; color:var(--grey-text); text-decoration:none; padding:7px 18px; font-size:0.78rem; letter-spacing:0.12em; border-right:1px solid rgba(255,255,255,0.07); font-family:'Noto Sans JP',sans-serif; transition:background 0.2s,color 0.2s; }
+  .footer-links a {
+    position: relative;
+    position: relative; background:transparent; color:var(--grey-text); text-decoration:none; padding:7px 18px; font-size:0.78rem; letter-spacing:0.12em; border-right:1px solid rgba(255,255,255,0.07); font-family:'Noto Sans JP',sans-serif; transition:background 0.2s,color 0.2s; }
   .footer-links a:last-child { border-right:none; }
   .footer-links a:hover { background:var(--blue); color:var(--white); }
   .footer-links a.disabled { color:rgba(232,238,242,0.18); pointer-events:none; cursor:not-allowed; }
+  .footer-links a .nav-coming {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26,123,196,0.18);
+    border: 1px solid rgba(26,123,196,0.35);
+    color: rgba(90,184,240,0.7);
+    font-size: 0.48rem;
+    letter-spacing: 0.1em;
+    padding: 1px 6px;
+    border-radius: 0 0 3px 3px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+  }
   footer address { font-style:normal; font-size:0.8rem; color:var(--grey-dim); line-height:2.2; margin-bottom:16px; }
   footer .copy { font-size:0.7rem; color:rgba(232,238,242,0.2); letter-spacing:0.05em; font-family:'Barlow',sans-serif; }
 
@@ -522,7 +561,8 @@
     .content-wrap { padding:32px 14px; }
     .kobo-block { padding:24px 18px; }
     .kobo-service { grid-template-columns:1fr; }
-    nav ul li a { padding:9px 12px; font-size:0.75rem; }
+    nav ul li { position: relative; }
+  nav ul li a { padding: 10px 22px; font-size:0.75rem; }
   }
 </style>
 </head>
@@ -545,8 +585,8 @@
   <ul>
     <li><a href="index.html">HOME</a></li>
     <li><a href="facility.html" class="active">施　設</a></li>
-    <li><a class="disabled">営業時間・料金</a></li>
-    <li><a class="disabled">スクール</a></li>
+    <li><a class="disabled"><span class="nav-coming">準備中</span>営業時間・料金</a></li>
+    <li><a class="disabled"><span class="nav-coming">準備中</span>スクール</a></li>
     <li><a href="access.html">アクセス</a></li>
   </ul>
 </nav>
@@ -730,8 +770,8 @@
     <div class="footer-links">
       <a href="index.html">HOME</a>
       <a href="facility.html">施　設</a>
-      <a class="disabled">営業時間・料金</a>
-      <a class="disabled">スクール</a>
+      <a class="disabled"><span class="nav-coming">準備中</span>営業時間・料金</a>
+      <a class="disabled"><span class="nav-coming">準備中</span>スクール</a>
       <a href="access.html">アクセス</a>
     </div>
   </div>
